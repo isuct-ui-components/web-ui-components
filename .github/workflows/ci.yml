@@ -1,0 +1,162 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Verification
+
+on:
+  push:
+    branches: [master]
+    paths-ignore:
+      - '**.md'
+
+  pull_request:
+    branches: [master]
+
+jobs:
+  check-secrets:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    outputs:
+      github-token: ${{ steps.github-token.outputs.defined }}
+    steps:
+      - id: github-token
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: "${{ env.GITHUB_TOKEN != '' }}"
+        run: echo "::set-output name=defined::true"
+
+  pre_ci:
+    name: Prepare CI environment
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    outputs:
+      commit_message: ${{ steps.get_commit_message.outputs.commit_message }}
+      branch: ${{ steps.extract_branch.outputs.branch }}
+
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+        with:
+          # We need to fetch with a depth of 2 for pull_request so we can do HEAD^2
+          fetch-depth: 2
+
+      - name: 'Get commit message'
+        id: get_commit_message
+        env:
+          COMMIT_PUSH: ${{ github.event.head_commit.message }}
+        run: |
+          COMMIT_MESSAGE="${COMMIT_PUSH:-$(git log --format=%B -n 1 HEAD^2)}"
+          echo "::set-output name=commit_message::${COMMIT_MESSAGE}"
+      - name: Extract branch name
+        id: extract_branch
+        run: |
+          TMP_PULL_HEAD_REF="${{ github.head_ref }}"
+          TMP_GITHUB_REF="${GITHUB_REF#refs/heads/}"
+          EXPORT_VALUE=""
+          if [ "${TMP_PULL_HEAD_REF}" != "" ]
+          then
+              EXPORT_VALUE="${TMP_PULL_HEAD_REF}"
+          else
+              EXPORT_VALUE="${TMP_GITHUB_REF}"
+          fi
+          echo "##[set-output name=branch;]${EXPORT_VALUE}"
+  pre-tests:
+    name: Install dependencies (if needed)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - name: Manage cache
+        uses: actions/cache@v2.1.7
+        with:
+          path: |
+            ./node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('.github/workflows/*.yml') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+            ${{ runner.OS }}-build
+      - name: npm install
+        run: npm ci
+
+  test-build:
+    needs: [pre-tests]
+    name: Build
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - name: Manage cache
+        uses: actions/cache@v2.1.7
+        with:
+          path: |
+            ./node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('.github/workflows/*.yml') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+            ${{ runner.OS }}-build
+      - name: npm build
+        run: npm run build
+
+  test-lint:
+    timeout-minutes: 5
+    needs: [pre-tests]
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - name: Manage cache
+        uses: actions/cache@v2.1.7
+        with:
+          path: |
+            ./node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('.github/workflows/*.yml') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+            ${{ runner.OS }}-build
+      - name: Get lint results
+        run: npm run lint
+
+  publish:
+    name: Publish a new version of package via Semantic Release
+    needs: [test-lint, test-build, pre_ci]
+    timeout-minutes: 5
+    if: ${{ github.ref == 'refs/heads/master' }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - name: Manage cache
+        uses: actions/cache@v2.1.7
+        with:
+          path: |
+            ./node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('.github/workflows/*.yml') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+            ${{ runner.OS }}-build
+      - name: Prepare token
+        run: echo "//npm.pkg.github.com/:_authToken=${GH_TOKEN}" >> .npmrc
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Build project
+        run: npm run build
