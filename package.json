@@ -1,6 +1,6 @@
 {
-  "name": "ui_lib",
-  "version": "0.1.0",
+  "name": "web-ui-components",
+  "version": "0.0.0-development",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^9.0.0",
@@ -27,7 +27,8 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx,json}'",
-    "format": "prettier 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.js"
+    "format": "prettier 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.js",
+    "semantic-release": "semantic-release"
   },
   "eslintConfig": {
     "extends": [
@@ -44,7 +45,10 @@
         }
       },
       {
-        "files": ["**/*.ts", "**/*.tsx"],
+        "files": [
+          "**/*.ts",
+          "**/*.tsx"
+        ],
         "parser": "typescript-eslint-parser",
         "rules": {
           "no-undef": "off"
@@ -90,9 +94,14 @@
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.4",
     "prop-types": "^15.8.1",
+    "semantic-release": "^20.1.1",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.5",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isuct-ui-components/web-ui-components.git"
   }
 }
