@@ -1,0 +1,99 @@
+@import './fonts';
+
+.storybook-button {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  border: 0;
+  cursor: pointer;
+
+  &--primary {
+    color: white;
+    background-color: #027bc7;
+  }
+
+  &--secondary {
+    color: #0078D2;
+    background-color: transparent;
+    border: 1px solid #0078D2;
+
+    .storybook-button--arrow path{
+      fill: #0078D2;
+    }
+  }
+
+  &--small {
+    margin: 0;
+    font-size: 14px;
+    line-height: 32px;
+    padding: 5px 16px;
+
+    .storybook-button--arrow{
+      width: 12px;
+      height: 12px;
+
+      &-left {
+        margin-right: 11px;
+      }
+
+      &-right {
+        margin-left: 11px;
+      }
+    }
+  }
+
+  &--medium {
+    margin: 0;
+    font-size: 16px;
+    line-height: 40px;
+    padding: 6px 24px;
+
+    .storybook-button--arrow{
+      width: 16px;
+      height: 16px;
+      
+      &-left {
+        margin-right: 14px;
+      }
+
+      &-right {
+        margin-left: 14px;
+      }
+    }
+  }
+
+  &--large {
+    margin: 0;
+    font-size: 18px;
+    line-height: 48px;
+    padding: 8px 25px;
+  }
+
+  &--arrow {
+    width: 24px;
+    height: 24px;
+
+    &-right {
+      margin-left: 20px;
+    }
+
+    &-left {
+      margin-right: 20px;
+      transform: rotate(180deg);
+    }
+  }
+
+  &--bR-0px {
+    border-radius: 0px;
+  }
+
+  &--bR-4px {
+    border-radius: 4px;
+  }
+
+  &--bR-99px {
+    border-radius: 99px;
+  }
+}
