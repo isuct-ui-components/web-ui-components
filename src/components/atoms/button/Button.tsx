@@ -1,7 +1,7 @@
 import React from 'react';
 import './button.scss';
 
-import { ReactComponent as Icon} from './assets/button/IconForward.svg';
+import { ReactComponent as Icon} from './IconForward.svg';
 
 interface ButtonProps {
   /**
