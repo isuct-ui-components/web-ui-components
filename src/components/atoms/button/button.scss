@@ -1,0 +1,94 @@
+@import '../../../scss/app';
+
+.storybook-button {
+  @include font-face('Inter', 400, normal);
+  display: flex;
+  align-items: center;
+  border: 0;
+  cursor: pointer;
+
+  &--primary {
+    color: var(--white-color);
+    background-color: var(--blue-color);
+  }
+
+  &--secondary {
+    color: var(--blue-color);
+    background-color: transparent;
+    border: 1px solid var(--blue-color);
+
+    .storybook-button--arrow path{
+      fill: var(--blue-color);
+    }
+  }
+
+  &--small {
+    @include font-size(14);
+    line-height: 32px;
+    padding: 5px 16px;
+
+    .storybook-button--arrow{
+      width: 12px;
+      height: 12px;
+
+      &-left {
+        margin-right: 11px;
+      }
+
+      &-right {
+        margin-left: 11px;
+      }
+    }
+  }
+
+  &--medium {
+    @include font-size(16);
+    line-height: 40px;
+    padding: 6px 24px;
+
+    .storybook-button--arrow{
+      width: 16px;
+      height: 16px;
+      
+      &-left {
+        margin-right: 14px;
+      }
+
+      &-right {
+        margin-left: 14px;
+      }
+    }
+  }
+
+  &--large {
+    @include font-size(18);
+    line-height: 48px;
+    padding: 8px 25px;
+  }
+
+  &--arrow {
+    width: 24px;
+    height: 24px;
+
+    &-right {
+      margin-left: 20px;
+    }
+
+    &-left {
+      margin-right: 20px;
+      transform: rotate(180deg);
+    }
+  }
+
+  &--bR-0px {
+    border-radius: 0px;
+  }
+
+  &--bR-4px {
+    border-radius: 4px;
+  }
+
+  &--bR-99px {
+    border-radius: 99px;
+  }
+}

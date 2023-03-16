@@ -11,8 +11,9 @@ package-lock.json
 
 # production
 /build
-/public #storybook static files
-
+/storybook-static
+/stories
+ 
 # misc
 .DS_Store
 .env.local
