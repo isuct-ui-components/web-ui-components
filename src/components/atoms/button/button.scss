@@ -1,32 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+@import '../../../scss/app';
 
 .storybook-button {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
+  @include font-face('Inter', 400, normal);
   display: flex;
   align-items: center;
   border: 0;
   cursor: pointer;
 
   &--primary {
-    color: white;
-    background-color: #027bc7;
+    color: var(--white-color);
+    background-color: var(--blue-color);
   }
 
   &--secondary {
-    color: #0078D2;
+    color: var(--blue-color);
     background-color: transparent;
-    border: 1px solid #0078D2;
+    border: 1px solid var(--blue-color);
 
     .storybook-button--arrow path{
-      fill: #0078D2;
+      fill: var(--blue-color);
     }
   }
 
   &--small {
-    margin: 0;
-    font-size: 14px;
+    @include font-size(14);
     line-height: 32px;
     padding: 5px 16px;
 
@@ -45,8 +42,7 @@
   }
 
   &--medium {
-    margin: 0;
-    font-size: 16px;
+    @include font-size(16);
     line-height: 40px;
     padding: 6px 24px;
 
@@ -65,8 +61,7 @@
   }
 
   &--large {
-    margin: 0;
-    font-size: 18px;
+    @include font-size(18);
     line-height: 48px;
     padding: 8px 25px;
   }

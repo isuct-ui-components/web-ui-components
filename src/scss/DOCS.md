@@ -20,4 +20,26 @@ and then import it in main mixins file (./src/scss/_mixins.scss) like:
     @import './mixins/font-face';
 ```
 
-(all mixins gonna imported in App.scss)
+(all mixins are imported in app.scss)
+
+
+To use font-face mixin:
+    Put the following scss into component`s styles: 
+    ```
+    @include font-face(font-family, font-weight, font-style); 
+    //example:
+    @include font-face("Inter", 400, normal);
+    ```
+    
+To use font-size mixin (remove phantom indent):
+    Put the following scss into component`s styles: 
+    ```
+    @include font-size(font-size); 
+    //example: 
+    @include font-size(14);
+    ```
+
+File _variables includes color and vars. Availiable vars:
+    --white-color: #FFFFFF;
+    --blue-color #0078D2;
+    
