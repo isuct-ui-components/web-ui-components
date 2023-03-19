@@ -15,14 +15,24 @@ export default {
     size: {
       options: ['small','medium','large'],
       control: {type: 'select'}
+    },
+    borderRadius: {
+      options: ['bR-0', 'bR-4', 'bR-99'],
+      control: {type: 'select'}
     }
   },
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
-export const Example = Template.bind({});
-Example.args = {
+export const DefaultInput = Template.bind({});
+DefaultInput.args = {
   size: 'large',
-  placeholderText: 'text'
+  placeholderText: 'Enter the text...',
+  readOnly: false,
+  required: false,
+  inactive: false,
+  name: 'text',
+  type: 'text',
+  maxLenght: 50
 };
