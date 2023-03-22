@@ -1,13 +1,5 @@
 @import '../../../scss/App';
 
-.storybook-label {
-  @include font-face('Inter', 400, normal);
-  @include font-size(18);
-  line-height: 150%;
-  color: rgba(var(--text-color), 0.6);
-  margin-bottom: 10px;
-}
-
 .storybook-input{
   border: 1px solid rgba(0, 66, 105, 0.28);
   border-radius: 4px;
