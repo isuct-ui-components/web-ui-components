@@ -1,11 +1,11 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Input } from './Input';
+import { LabelInput } from './Input';
 
 export default {
-  title: 'Example/Input',
-  component: Input,
+  title: 'Example/LabelInput',
+  component: LabelInput,
 
   argTypes: {
     type: {
@@ -19,20 +19,29 @@ export default {
     borderRadius: {
       options: ['bR-0', 'bR-4', 'bR-99'],
       control: {type: 'select'}
+    },
+    labelDirection: {
+      options: ['row', 'column'],
+      control: {type: 'select'}
     }
   },
-} as ComponentMeta<typeof Input>;
+} as ComponentMeta<typeof LabelInput>;
 
-const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
+const Template: ComponentStory<typeof LabelInput> = (args) => <LabelInput {...args} />;
 
-export const DefaultInput = Template.bind({});
-DefaultInput.args = {
-  size: 'large',
-  placeholderText: 'Enter the text...',
-  readOnly: false,
+export const Example = Template.bind({});
+Example.args = {
+  placeholderText: '',
+  disabled: false,
   required: false,
-  inactive: false,
-  name: 'text',
+  readOnly: false,
+  name: '',
+  value: '',
   type: 'text',
-  maxLenght: 50
+  size: 'large',
+  borderRadius: '',
+  maxLenght: 50,
+  labelFor: '',
+  labelText: '',
+  labelDirection: '',
 };

@@ -38,7 +38,6 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const Button = ({
   primary = true,
   size = 'medium',

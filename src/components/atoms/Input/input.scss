@@ -1,10 +1,47 @@
 @import '../../../scss/App';
 
+.storybook-label {
+  @include font-face('Inter', 400, normal);
+  @include font-size(18);
+  line-height: 150%;
+  color: rgba($text-color, 0.6);
+  display: flex;
+
+  &--column {
+    flex-direction: column;
+
+    .storybook-input {
+      margin-top: 5px;
+    }
+  }
+
+  &--row {
+    flex-direction: row;
+    align-items: center;
+
+    .storybook-input {
+      margin-left: 10px;
+    }
+  }
+
+  &--small {
+    @include font-size(12);
+  }
+
+  &--medium {
+    @include font-size(16);
+  }
+
+  &--large {
+    @include font-size(18);
+  }
+}
+
 .storybook-input{
   @include font-face('Inter', 400, normal);
   border: 1px solid rgba(0, 66, 105, 0.28);
   width: 280px;
-  color: $text-color, 0.6;
+  color: rgba($text-color, 0.6);
 
   &::placeholder {
     line-height: 150%;

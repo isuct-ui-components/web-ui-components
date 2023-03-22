@@ -3,6 +3,18 @@ import './input.scss';
 
 interface InputProps {
     /**
+     * Label text
+     */
+    labelText?: string;
+    /**
+     * Input`s id to connect with label
+     */
+    id?: string;
+    /**
+     * Labeled control to
+     */
+    labelFor?: string,
+    /**
      * Placeholder text
      */
     placeholderText?: string;
@@ -13,7 +25,7 @@ interface InputProps {
     /**
      * Is the input disabled or not
      */
-    inactive: boolean;
+    disabled?: boolean;
     /**
      * Is the input in read only mode
      */
@@ -41,24 +53,36 @@ interface InputProps {
     /**
      * Input`s border radius
      */
+    /**
+     * Label and input direction
+     */
+    labelDirection?: 'column' | 'row';
     borderRadius?: string,
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const Input = ({
-  placeholderText,
-  inactive = false,
-  required = false,
-  readOnly = false,
-  name,
-  type,
-  value,
-  size,
-  borderRadius,
-  maxLenght
-}: InputProps) => {
+export const Input: React.FC<InputProps> = ({...props}: InputProps) => {
   return(
-    <input className={['storybook-input', `storybook-input--${size}`, `storybook-input--${borderRadius}`].join(' ')} placeholder={placeholderText} type={type} disabled={inactive} name={name} maxLength={maxLenght} required={required} value={value} readOnly={readOnly}
-    />
+    <>
+      <input className={['storybook-input', `storybook-input--${props.size}`, `storybook-input--${props.borderRadius}`].join(' ')} placeholder={props.placeholderText} type={props.type} disabled={props.disabled} name={props.name} maxLength={props.maxLenght} required={props.required} value={props.value} readOnly={props.readOnly}
+      />
+    </>
   );
 }
+
+export const LabelInput: React.FC<InputProps> = ({
+  labelFor,
+  labelDirection,
+  labelText,
+  ...props
+}: InputProps) => {
+  return(
+    <>
+      <label htmlFor={labelFor} className={['storybook-label', `storybook-label--${labelDirection}`, `storybook-label--${props.size}`].join(' ')}>{labelText}
+        <Input id={labelFor} {...props} />
+      </label>
+    </> 
+  )
+}
+
+
+
