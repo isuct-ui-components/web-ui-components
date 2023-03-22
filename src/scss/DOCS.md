@@ -40,7 +40,7 @@ To use font-size mixin (remove phantom indent):
     ```
 
 File _variables includes color and vars. Availiable vars:
-    --white-color: #FFFFFF;
-    --blue-color #0078D2;
-    --text-color: #002033;
+    $white-color: #FFFFFF;
+    $blue-color #0078D2;
+    $text-color: #002033;
     
