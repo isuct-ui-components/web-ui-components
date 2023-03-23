@@ -6,7 +6,7 @@ import {Input, InputProps} from '../Input/Input';
 
 interface LabelInputProps extends InputProps {
   /**
-  * Labeled control to
+  * Input`s id to connect with label
   */
   labelFor?: string;
   /**
@@ -14,7 +14,7 @@ interface LabelInputProps extends InputProps {
   */
   labelDirection?: 'column' | 'row';
   /**
-  * Input`s id to connect with label
+  * Label text
   */
   labelText?: string;
 }
@@ -28,7 +28,7 @@ export const LabelInput: React.FC<LabelInputProps> = ({
   return(
     <>
       <label htmlFor={labelFor} className={['storybook-label', `storybook-label--${labelDirection}`, `storybook-label--${props.size}`].join(' ')}>{labelText}
-        <Input id={labelFor} {...props} />
+        <Input id={labelFor} {...props}/>
       </label>
     </> 
   )

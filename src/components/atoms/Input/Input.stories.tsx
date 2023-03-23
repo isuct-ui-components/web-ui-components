@@ -27,14 +27,12 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
 export const Example = Template.bind({});
 Example.args = {
-  placeholderText: '',
+  id: '',
+  placeholderText: 'text',
+  name: 'text',
   disabled: false,
-  required: false,
   readOnly: false,
-  name: '',
-  value: '',
-  type: 'text',
-  size: 'large',
-  borderRadius: '',
+  required: false,
+  value: 'text',
   maxLenght: 50
 };
