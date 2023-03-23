@@ -1,9 +1,9 @@
 import React from 'react';
 import './button.scss';
 
-import { ReactComponent as Icon} from './IconForward.svg';
+import {ReactComponent as Icon} from './IconForward.svg';
 
-export interface ButtonProps {
+interface ButtonProps {
   /**
    * Is this the principal call to action on the page?
    */
