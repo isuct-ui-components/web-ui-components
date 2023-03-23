@@ -38,8 +38,7 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const Button = ({
+export const Button: React.FC<ButtonProps> = ({
   primary = true,
   size = 'medium',
   backgroundColor,
@@ -53,15 +52,16 @@ export const Button = ({
   const rightArrow = arrowRight ? 'storybook-button--arrow-right' : undefined;
   const leftArrow = arrowLeft ? 'storybook-button--arrow-left' : undefined;
   return (
-    <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, `storybook-button--bR-${borderRadius}`, mode].join(' ')}
-      style={{ backgroundColor }}
-      {...props}
-    >
-      {arrowLeft && <Icon className={['storybook-button--arrow', leftArrow].join(' ')}/>}
-      {label}
-      {arrowRight && <Icon className={['storybook-button--arrow', rightArrow].join(' ')}/>}
-    </button>  
+    <>
+      <button
+        type="button"
+        className={['storybook-button', `storybook-button--${size}`, `storybook-button--bR-${borderRadius}`, mode].join(' ')}
+        style={{ backgroundColor }}
+        {...props}>
+        {arrowLeft && <Icon className={['storybook-button--arrow', leftArrow].join(' ')}/>}
+        {label}
+        {arrowRight && <Icon className={['storybook-button--arrow', rightArrow].join(' ')}/>}
+      </button> 
+    </> 
   );
 };
