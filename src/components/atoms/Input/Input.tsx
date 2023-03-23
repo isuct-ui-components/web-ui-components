@@ -45,7 +45,7 @@ export interface InputProps {
 export const Input: React.FC<InputProps> = ({...props}: InputProps) => {
   return(
     <>
-      <input className={['storybook-input', `storybook-input--${props.size}`, `storybook-input--${props.borderRadius}`].join(' ')} placeholder={props.placeholderText} type={props.type} disabled={props.disabled} name={props.name} maxLength={props.maxLenght} required={props.required} value={props.value} readOnly={props.readOnly}
+      <input className={['storybook-input', `storybook-input--${props.size}`, `storybook-input--${props.borderRadius}`].join(' ')} placeholder={props.placeholderText} type={props.type} disabled={props.disabled} name={props.name} maxLength={props.maxLenght} required={props.required} defaultValue={props.value} readOnly={props.readOnly}
       />
     </>
   );
