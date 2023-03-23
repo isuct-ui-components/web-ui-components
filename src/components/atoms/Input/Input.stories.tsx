@@ -37,6 +37,7 @@ Example.args = {
   required: false,
   readOnly: false,
   name: '',
+  value: '',
   type: 'text',
   size: 'large',
   borderRadius: '',
