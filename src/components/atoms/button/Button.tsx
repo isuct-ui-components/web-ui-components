@@ -3,13 +3,13 @@ import './button.scss';
 
 import { ReactComponent as Icon} from './IconForward.svg';
 
-interface ButtonProps {
+export interface ButtonProps {
   /**
    * Is this the principal call to action on the page?
    */
   primary?: boolean;
   /**
-   * What background color to use
+   * What is background color to use
    */
   backgroundColor?: string;
   /**
@@ -39,29 +39,24 @@ interface ButtonProps {
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const Button = ({
-  primary = true,
-  size = 'medium',
+export const Button: React.FC<ButtonProps> = ({
   backgroundColor,
-  arrowRight = false,
-  arrowLeft = false,
-  borderRadius = '0px',
-  label,
   ...props
 }: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
-  const rightArrow = arrowRight ? 'storybook-button--arrow-right' : undefined;
-  const leftArrow = arrowLeft ? 'storybook-button--arrow-left' : undefined;
+  const mode = props.primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  const rightArrow = props.arrowRight ? 'storybook-button--arrow-right' : undefined;
+  const leftArrow = props.arrowLeft ? 'storybook-button--arrow-left' : undefined;
   return (
-    <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, `storybook-button--bR-${borderRadius}`, mode].join(' ')}
-      style={{ backgroundColor }}
-      {...props}
-    >
-      {arrowLeft && <Icon className={['storybook-button--arrow', leftArrow].join(' ')}/>}
-      {label}
-      {arrowRight && <Icon className={['storybook-button--arrow', rightArrow].join(' ')}/>}
-    </button>  
+    <>
+      <button
+        type="button"
+        className={['storybook-button', `storybook-button--${props.size}`, `storybook-button--bR-${props.borderRadius}`, mode].join(' ')}
+        style={{ backgroundColor }}
+        {...props}>
+        {props.arrowLeft && <Icon className={['storybook-button--arrow', leftArrow].join(' ')}/>}
+        {props.label}
+        {props.arrowRight && <Icon className={['storybook-button--arrow', rightArrow].join(' ')}/>}
+      </button>  
+    </>
   );
 };

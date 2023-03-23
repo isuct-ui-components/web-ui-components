@@ -2,7 +2,13 @@ import React from 'react';
 import './input.scss';
 
 export interface InputProps {
+    /**
+     * Input`s id
+     */
     id?: string;
+    /**
+     * Placeholder text
+     */
     placeholderText?: string;
     /**
      * Input`s name for using in the form
@@ -50,7 +56,7 @@ export interface InputProps {
 export const Input: React.FC<InputProps> = ({...props}: InputProps) => {
   return(
     <>
-      <input className={['storybook-input', `storybook-input--${props.size}`, `storybook-input--${props.borderRadius}`].join(' ')} placeholder={props.placeholderText} type={props.type} disabled={props.disabled} name={props.name} maxLength={props.maxLenght} required={props.required} defaultValue={props.value} readOnly={props.readOnly}
+      <input id={props.id} className={['storybook-input', `storybook-input--${props.size}`, `storybook-input--${props.borderRadius}`].join(' ')} placeholder={props.placeholderText} type={props.type} disabled={props.disabled} name={props.name} maxLength={props.maxLenght} required={props.required} defaultValue={props.value} readOnly={props.readOnly}
       />
     </>
   );

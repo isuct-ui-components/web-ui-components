@@ -28,19 +28,21 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 export const Example = Template.bind({});
 Example.args = {
 <<<<<<< HEAD
+<<<<<<< HEAD
   size: 'large',
   placeholderText: 'text'
 };
 =======
   placeholderText: '',
+=======
+  id: '',
+  placeholderText: 'text',
+  name: 'text',
+>>>>>>> 7e3c0c1 (Correct non-working logic of Button, Input and LabelInput)
   disabled: false,
-  required: false,
   readOnly: false,
-  name: '',
-  value: '',
-  type: 'text',
-  size: 'large',
-  borderRadius: '',
+  required: false,
+  value: 'text',
   maxLenght: 50
 };
 >>>>>>> 31ee1c3 (Add LabelInput and Input components)
