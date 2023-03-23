@@ -40,6 +40,11 @@ export interface InputProps {
      * Input`s border radius
      */
     borderRadius?: string,
+    /**
+     * 
+     * @returns text from input to input`s value attribute
+     */
+    onChange: () => void;
 }
 
 export const Input: React.FC<InputProps> = ({...props}: InputProps) => {
