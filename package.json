@@ -26,8 +26,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "lint": "eslint src/**/*.{js,jsx,ts,tsx,json}",
-    "format": "prettier src/**/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc.js"
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "format": "prettier src/**/*.{ts,tsx,css,md,json} --config ./.prettierrc.js"
   },
   "eslintConfig": {
     "extends": [
