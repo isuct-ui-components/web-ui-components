@@ -1,16 +1,15 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 declare module '*.svg' {
     const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
     export default content;
 }
 
 declare module '*.png' {
-    const content: any;
+    const content: Record<string, string>;
     export default content;
 }
 
 declare module '*.jpg' {
-    const content: any;
+    const content: Record<string, string>;
     export default content;
 }
 
