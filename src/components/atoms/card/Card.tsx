@@ -17,19 +17,19 @@ interface CardProps {
     */
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const Card = ({
+export const Card: React.FC<CardProps> = ({
   borderRadius = '0px',
   stroke = 'shadow',
   backgroundColor,
   ...props
 }: CardProps) => {
   return (
-    <div
-      className={['storybook-card', `storybook-card--bR-${borderRadius}`, `storybook-card--${stroke}` ].join(' ')}
-      style={{ backgroundColor }}
-      {...props}
-    >
-    </div>
+    <>
+      <div
+        className={['storybook-card', `storybook-card--bR-${borderRadius}`, `storybook-card--${stroke}` ].join(' ')}
+        style={{ backgroundColor }}
+        {...props}>
+      </div>
+    </>
   );
 };
