@@ -5,7 +5,7 @@ import {ReactComponent as Icon} from './IconForward.svg';
 
 interface ButtonProps {
   /**
-   * Is this the principal call to action on the page?
+   * Is this the primary button?
    */
   primary?: boolean;
   /**
@@ -17,19 +17,19 @@ interface ButtonProps {
    */
   size?: 'small' | 'medium' | 'large';
   /**
-   * Button contents
+   * Button left arrow
    */
   arrowLeft?: boolean;
   /**
-   * Button left arrow
+   * Button right arrow
    */
   arrowRight?: boolean;
   /**
-   * Button right arrow
+   * Button`s border radius
    */
   borderRadius? : '0px' | '4px' | '99px';
   /**
-   * Button`s border radius
+   * Button contents
    */
   label: string;
   /**
