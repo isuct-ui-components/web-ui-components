@@ -27,7 +27,6 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
 export const Example = Template.bind({});
 Example.args = {
-  id: '',
   placeholderText: 'text',
   name: 'text',
   disabled: false,
