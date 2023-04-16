@@ -12,12 +12,10 @@ interface CheckBoxProps {
 
 export const CheckBox: React.FC<CheckBoxProps> = ({
   ...props
-}: CheckBoxProps) => {
+}) => {
   return(
-    <>
-      <label>
-        <input type='checkbox' disabled={ props.isDisabled } form={ props.formId } name={ props.name } value={ props.value } required={ props.isRequired } /> { props.labelText }
-      </label>
-    </>
+    <label>
+      <input type='checkbox' disabled={ props.isDisabled } form={ props.formId } name={ props.name } value={ props.value } required={ props.isRequired } /> { props.labelText }
+    </label>
   );
 }
