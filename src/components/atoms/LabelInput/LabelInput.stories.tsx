@@ -41,7 +41,6 @@ Example.args = {
   size: 'large',
   borderRadius: '',
   maxLenght: 50,
-  labelFor: '',
   labelText: '',
   labelDirection: '',
 };

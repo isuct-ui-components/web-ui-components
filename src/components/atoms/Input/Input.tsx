@@ -2,7 +2,9 @@ import React from 'react';
 import './input.scss';
 
 export interface InputProps {
-    id?: string;
+    /**
+     * Placeholder text
+     */
     placeholderText?: string;
     /**
      * Input`s name for using in the form
