@@ -1,7 +1,7 @@
-import React from 'react';
-import './button.scss';
+import React, { FC } from 'react';
+import './Button.scss';
 
-import { ReactComponent as Icon} from './IconForward.svg';
+import { ReactComponent as Icon } from './arrow.svg';
 
 interface ButtonProps {
   /**
@@ -27,7 +27,7 @@ interface ButtonProps {
   /**
    * Button right arrow
    */
-  borderRadius? : '0px' | '4px' | '99px';
+  borderRadius?: '0px' | '4px' | '99px';
   /**
    * Button`s border radius
    */
@@ -39,7 +39,7 @@ interface ButtonProps {
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const Button = ({
+export const Button: FC<ButtonProps> = ({
   primary = true,
   size = 'medium',
   backgroundColor,
@@ -48,20 +48,20 @@ export const Button = ({
   borderRadius = '0px',
   label,
   ...props
-}: ButtonProps) => {
+}) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
   const rightArrow = arrowRight ? 'storybook-button--arrow-right' : undefined;
   const leftArrow = arrowLeft ? 'storybook-button--arrow-left' : undefined;
   return (
     <button
-      type="button"
+      type='button'
       className={['storybook-button', `storybook-button--${size}`, `storybook-button--bR-${borderRadius}`, mode].join(' ')}
       style={{ backgroundColor }}
       {...props}
     >
-      {arrowLeft && <Icon className={['storybook-button--arrow', leftArrow].join(' ')}/>}
+      {arrowLeft && <Icon className={['storybook-button--arrow', leftArrow].join(' ')} />}
       {label}
-      {arrowRight && <Icon className={['storybook-button--arrow', rightArrow].join(' ')}/>}
-    </button>  
+      {arrowRight && <Icon className={['storybook-button--arrow', rightArrow].join(' ')} />}
+    </button>
   );
 };

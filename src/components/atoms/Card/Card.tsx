@@ -1,5 +1,5 @@
 import React from 'react';
-import './card.scss';
+import './Card.scss';
 
 interface CardProps {
     borderRadius? : '0px' | '4px' | '8px' | '16px';

@@ -1,6 +1,6 @@
 {
-  "name": "ui_lib",
-  "version": "0.1.0",
+  "name": "my-webpack-project",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^9.0.0",
@@ -15,19 +15,22 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "sass": "^1.58.3",
     "storybook": "^6.5.16",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "webpack --mode=production --node-env=production",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "lint": "eslint src/**/*.{ts,tsx}",
-    "format": "prettier src/**/*.{ts,tsx,css,md,json} --config ./.prettierrc.js"
+    "format": "prettier src/**/*.{ts,tsx,css,md,json} --config ./.prettierrc.js",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve"
   },
   "eslintConfig": {
     "extends": [
@@ -44,7 +47,10 @@
         }
       },
       {
-        "files": ["**/*.ts", "**/*.tsx"],
+        "files": [
+          "**/*.ts",
+          "**/*.tsx"
+        ],
         "parser": "typescript-eslint-parser",
         "rules": {
           "no-undef": "off"
@@ -83,16 +89,23 @@
     "@storybook/testing-library": "^0.0.13",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@typescript-eslint/parser": "^5.54.0",
+    "@webpack-cli/generators": "^3.0.2",
     "babel-loader": "^9.1.2",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "css-loader": "^6.7.3",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "postcss": "^8.4.23",
+    "postcss-loader": "^7.2.4",
     "prettier": "^2.8.4",
     "prop-types": "^15.8.1",
+    "sass": "^1.62.0",
+    "sass-loader": "^13.2.2",
+    "style-loader": "^3.3.2",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.5",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1"
+    "webpack": "^5.81.0",
+    "webpack-cli": "^5.0.2"
   }
 }

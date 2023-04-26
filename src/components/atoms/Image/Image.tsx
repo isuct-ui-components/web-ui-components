@@ -10,7 +10,7 @@ export type ImageProps = {
   className?: string;
 };
 
-export const ImageContainer: FC<ImageProps> = ({
+export const Image: FC<ImageProps> = ({
   src,
   alt,
   height,
@@ -30,7 +30,6 @@ export const ImageContainer: FC<ImageProps> = ({
         width: width || '100%',
         height: height || '100%',
       }}
-    >
-    </img>
+    />
   );
 };
