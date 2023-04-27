@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import './Button.scss';
 
-import { ReactComponent as Icon } from './arrow.svg';
+import Icon from './arrow.svg';
 
 interface ButtonProps {
   /**

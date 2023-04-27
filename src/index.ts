@@ -1,3 +1,7 @@
-import * as component from './components'
+import * as components from './components';
 
-export default component
+export { components };
+
+const number: number = 5;
+
+export { number };

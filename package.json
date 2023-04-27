@@ -1,7 +1,7 @@
 {
-  "name": "my-webpack-project",
+  "name": "isuct-ui-kit",
   "version": "1.0.0",
-  "private": true,
+  "main": "dis/main.js",
   "dependencies": {
     "@testing-library/dom": "^9.0.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -76,7 +76,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.21.0",
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addon-interactions": "^6.5.16",
@@ -93,19 +94,21 @@
     "babel-loader": "^9.1.2",
     "babel-plugin-named-exports-order": "^0.0.2",
     "css-loader": "^6.7.3",
+    "css-minimizer-webpack-plugin": "^5.0.0",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "postcss": "^8.4.23",
-    "postcss-loader": "^7.2.4",
+    "mini-css-extract-plugin": "^2.7.5",
+    "node-sass": "^8.0.0",
     "prettier": "^2.8.4",
     "prop-types": "^15.8.1",
-    "sass": "^1.62.0",
+    "sass": "^1.62.1",
     "sass-loader": "^13.2.2",
     "style-loader": "^3.3.2",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.5",
     "webpack": "^5.81.0",
     "webpack-cli": "^5.0.2"
-  }
+  },
+  "description": "ISUCT UI FRAMEWORK"
 }

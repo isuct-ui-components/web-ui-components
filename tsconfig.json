@@ -25,5 +25,6 @@
     "./src/components/**/*.@(ts|tsx)",
     "./src/index.ts",
     "./src/custom.d.ts"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }
